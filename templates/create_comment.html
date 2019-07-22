@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block title %} Create Comment {% endblock %}
+
+
+{% block custom_files %}
+
+{% endblock %}
+
+
+{% block custom_css %}
+
+{% endblock %}
+
+
+{% block custom_js %}
+
+{% endblock %}
+
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block content %}
+    <h1>Create Comment</h1>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <br>
+        {{ form.content.label }}
+        {{ form.content }}
+        <br>
+
+        <button type="submit"> Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block footer_content %}
+
+{% endblock %}

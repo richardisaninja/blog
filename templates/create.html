@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block title %} Create {% endblock %}
+
+
+{% block custom_files %}
+
+{% endblock %}
+
+
+{% block custom_css %}
+
+{% endblock %}
+
+
+{% block custom_js %}
+
+{% endblock %}
+
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block content %}
+    <h1>Create Posts</h1>
+
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+        {#    Here we loop through the form fields. #}
+        {# I need you to figure out how to add a class to the field. This is a good time for crsipy-forms or django widget tweaks #}
+    {% for field in form %}
+        <br>
+        {{ field.label }}
+        {{ field }}
+    {% endfor %}
+    <button type="submit"> Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block footer_content %}
+
+{% endblock %}

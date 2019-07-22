@@ -1,0 +1,7 @@
+Django
+django-simple-blog
+gunicorn
+pytz
+psycopg2-binary
+django-crispy-forms
+django-widget-tweaks

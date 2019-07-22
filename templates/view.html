@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block title %} View Posts {% endblock %}
+
+
+{% block custom_files %}
+
+{% endblock %}
+
+
+{% block custom_css %}
+
+{% endblock %}
+
+
+{% block custom_js %}
+
+{% endblock %}
+
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block content %}
+    <h1>View Posts</h1>
+
+    <a href="{% url 'post_create' %}">Create New Post</a>
+
+    <table>
+        {% for post in posts %}
+            <h4>#{{ forloop.counter }} {{ post.title }}</h4>
+            <ul>
+                <li>
+                    {% if post.image %}
+                    <img src=" {{ post.image.url }} "/>
+                    {% endif %}
+                    <p>{{ post.content }}</p>
+                </li>
+            </ul>
+            <p>{{ post.submitted_at }}</p>
+            <a href="{% url 'post_update' post.id %}">Edit Post</a>
+            &nbsp;
+            <a href="{% url 'post_comment' post.id %}">Add Comment</a>
+            &nbsp;
+            <form method="post" action="{% url 'post_delete' post.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Delete Post"/>
+            </form>
+
+            <p style="font-weight:bold;">Comments</p>
+            <ul>
+                {% for comment in post.comments.all %}
+                    <li>
+                        <p>{{ comment.content }}</p>
+                    </li>
+                {% empty %}
+                    <li>None Entered</li>
+                {% endfor %}
+            </ul>
+        {% empty %}
+            <p>None Entered</p>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block footer_content %}
+
+{% endblock %}
