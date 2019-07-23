@@ -27,46 +27,148 @@
 
 
 {% block content %}
-    <h1>View Posts</h1>
+    <div class="main-sec">
+            <nav>
+                <ul class="nav">
+                    <li>.blog_logo</li>
+                    <li>View Posts</li>
+                    <li><div class="create"><a href="{% url 'post_create' %}">Create New Post</a></div></li>
+                </ul>
+            </nav>
 
-    <a href="{% url 'post_create' %}">Create New Post</a>
+            <div class="w3-content w3-display-container">
 
-    <table>
-        {% for post in posts %}
-            <h4>#{{ forloop.counter }} {{ post.title }}</h4>
-            <ul>
-                <li>
-                    {% if post.image %}
-                    <img src=" {{ post.image.url }} "/>
-                    {% endif %}
-                    <p>{{ post.content }}</p>
-                </li>
-            </ul>
-            <p>{{ post.submitted_at }}</p>
-            <a href="{% url 'post_update' post.id %}">Edit Post</a>
-            &nbsp;
-            <a href="{% url 'post_comment' post.id %}">Add Comment</a>
-            &nbsp;
-            <form method="post" action="{% url 'post_delete' post.id %}">
-                {% csrf_token %}
-                <input type="submit" value="Delete Post"/>
-            </form>
+                    <div class="w3-display-container mySlides">
+                      <img src="https://images.unsplash.com/photo-1563817064588-a56abff1ed6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" style="width:100%">
+                      <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+                            <span id='ct'></span><br>
+                            <span class='amount' ></span>
+                      </div>
+                    </div>
+                    
+                    <div class="w3-display-container mySlides">
+                      <img src="https://images.unsplash.com/photo-1563789863508-c599eb836dd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" style="width:100%">
+                      <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+                          
+                            <span class='amount' ></span>
+                      </div>
+                    </div>
 
-            <p style="font-weight:bold;">Comments</p>
-            <ul>
-                {% for comment in post.comments.all %}
-                    <li>
-                        <p>{{ comment.content }}</p>
-                    </li>
+                    <div class="w3-display-container mySlides">
+                            <img src="https://images.unsplash.com/photo-1563807053761-d1b352183a56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" style="width:100%">
+                            <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+                                   
+                            <span class='amount' ></span>
+                            </div>
+                          </div>
+
+                    <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+            </div>     
+            
+
+         
+
+            <div>
+                
+                        {% for post in posts %}
+
+                     <div class="col-4">
+                        <h5>{{ post.submitted_at }}</h5>
+                        <h3>{{ forloop.counter }}. {{ post.title }}</h3>
+                        
+                        <ul>
+                            <li>
+                                {% if post.image %}
+                                <img src=" {{ post.image.url }} "/>
+                                {% endif %}
+                                <p>{{ post.content }}</p>
+                            </li>
+                        </ul>
+                        <br>
+                        <a href="{% url 'post_update' post.id %}" class="block inline">Edit Post</a><br>
+                        
+                        <a href="{% url 'post_comment' post.id %}" class="">Add Comment</a>
+                        &nbsp;
+                        <form method="post" action="{% url 'post_delete' post.id %}" class="inline view-form">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete Post"/>
+                        </form>
+
+
+                        <!--Comment Section-->
+                        <p style="font-weight:bold;" class="comments">Comments</p>
+                        
+
+                       
+                        
+                        <ul class="comment-content">
+                            {% for comment in post.comments.all %}
+                                <li>
+                                    <p>{{ comment.content }}</p>
+                                </li>
+                            {% empty %}
+                                <li>None Entered</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+
                 {% empty %}
-                    <li>None Entered</li>
+                    <p>None Entered</p>
                 {% endfor %}
-            </ul>
-        {% empty %}
-            <p>None Entered</p>
-        {% endfor %}
-    </table>
+           
+                
+            </div>
+    </div>
 
+    <script>
+            var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+        showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+        showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+        }
+        
+        x[slideIndex-1].style.display = "block";  
+        
+        }
+
+        function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+        }
+
+        function display_ct() {
+        var x = new Date()
+        document.getElementById('ct').innerHTML = x;
+        display_c();
+        }
+
+        $(document).ready(function(){
+            var amount = $('.col-4').length;
+            $('.amount').html("Total number of posts submitted: "+ amount);
+        },
+        $('.comments').click(function(){
+            $(".comment-content").toggle();
+        })
+        )
+
+    </script>
 {% endblock %}
 
 {% block footer_content %}

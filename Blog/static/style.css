@@ -1,1 +1,145 @@
+*{
+    box-sizing: border-box;
+  }
+  .row::after{
+    content: "";
+    clear: both;
+    display: table;
+  }
+  [class*="col-"]{
+    float: left;
+    padding: 15px;
+  }
+  /* ----------------- Responsive Grid --------------------*/
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 30%;
+    margin-top: 8vh;
+    margin-left: 2vh;
+    background-color: #FBFBFB;
+ 
+    border-radius: 5px;
+    border: 1px solid #707070;
+    }
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  
+  @media only screen and (max-width: 768px){
+  /*For mobile phones*/
+  [class*="col-"]{
+    width: 100%;
+    border: 1px solid black;
+  }
+  }
+  img{
+    max-width: 100%;
+  }
+
+  .mySlides{
+    margin-top: 8vh;
+  }
+  .mySlides img{
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .w3-left, .w3-right, .w3-badge {cursor:pointer}
+  .w3-badge {height:13px;width:13px;padding:0}
+  
+HTML, body {
+    margin: 0px;
+    padding: 0px;
+      border: 0px;
+      color: #707070;
+      font-family: "Segoe UI";
+    }
 /* Write You CSS Here */
+
+.main-sec{
+    margin-right: 20vh;
+    margin-left: 20vh;
+    padding-top: 5vh
+}
+nav ul{
+    list-style-type: none;
+}
+ul, li {
+    margin: 0px;
+    padding: 0px;
+  }
+.nav li{
+    display: inline-block;
+    font-weight: 500;
+    
+}
+.nav li:nth-last-of-type(1){
+    margin-left: -5vw;
+}
+.nav li:nth-last-of-type(2){
+    margin-left: 5vw;
+}
+.nav li:nth-of-type(3){
+    float: right;
+}
+.create{
+    background-color: #F46967;
+    height: 38px;
+    width: 150px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500
+    
+}
+.nav a{
+    color: white;
+    text-decoration: none
+}
+.actual-content{
+    margin-top: 5vh;
+    width: 26vw;
+    float: left;
+    padding: 50px;
+}
+
+li{
+    list-style-type: none;
+}
+
+input[type=submit]{
+  background-color: #F46967;
+  height: 38px;
+  width: 150px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  margin-top: -4vh;
+}
+.view-form{
+  float: right;
+}
+.block{
+  display: block;
+}
+.inline{
+  display: inline-block;
+  
+}
+.col-4 a{
+ color: #F46967;
+ text-decoration: none;
+ font-weight: 500;
+}
+
+.mySlides {display:none;}

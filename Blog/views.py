@@ -22,7 +22,7 @@ def paginated_results(request, results, split_number=10):
 def view_posts(request):
     # this is the view used to view posts
     # these are the posts passed to the page
-    posts = list(BlogPost.objects.all().order_by('-id'))
+    posts = list(BlogPost.objects.all().order_by('submitted_at'))
     # this renders the html template
     return render(request, 'view.html', {
         'posts': posts
