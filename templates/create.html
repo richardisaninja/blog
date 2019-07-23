@@ -20,26 +20,43 @@
 {% endblock %}
 
 
+
+
 {% block header %}
 
 {% endblock %}
 
 
 {% block content %}
-    <h1>Create Posts</h1>
 
-    <form method="post" action="" enctype="multipart/form-data">
-    {% csrf_token %}
-        {#    Here we loop through the form fields. #}
-        {# I need you to figure out how to add a class to the field. This is a good time for crsipy-forms or django widget tweaks #}
-    {% for field in form %}
-        <br>
-        {{ field.label }}
-        {{ field }}
-    {% endfor %}
-    <button type="submit"> Submit</button>
-    </form>
+<div class="main-sec">
+        <nav>
+                <ul class="nav">
+                    <li>.blog_logo</li>
+                    <li>Create Post</li>
+                    <li><div class="create"><a href="{% url 'post_view' %}">View Posts</a></div></li>
+                </ul>
+            </nav>
 
+
+
+    <div class="row">
+            <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form method="post" onsubmit="return validateForm()" name="myForm" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+                {#    Here we loop through the form fields. #}
+                {# I need you to figure out how to add a class to the field. This is a good time for crsipy-forms or django widget tweaks #}
+                
+                    {{ form|crispy }}
+            
+
+            <button type="submit" class="create"> Submit</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
 {% endblock %}
 
 {% block footer_content %}

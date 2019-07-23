@@ -27,7 +27,7 @@
 
 
 {% block content %}
-    <div class="main-sec">
+    <div class="main-sec"  >
             <nav>
                 <ul class="nav">
                     <li>.blog_logo</li>
@@ -80,7 +80,7 @@
                         <ul>
                             <li>
                                 {% if post.image %}
-                                <img src=" {{ post.image.url }} "/>
+                                <img class="post-img" src=" {{ post.image.url }} "/>
                                 {% endif %}
                                 <p>{{ post.content }}</p>
                             </li>
@@ -121,53 +121,10 @@
                 
             </div>
     </div>
+    <div class="col-5 padding-bottom">&nbsp;</div>
 
     <script>
-            var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-        showDivs(slideIndex += n);
-        }
-
-        function currentDiv(n) {
-        showDivs(slideIndex = n);
-        }
-
-        function showDivs(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("demo");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-        }
         
-        x[slideIndex-1].style.display = "block";  
-        
-        }
-
-        function display_c(){
-        var refresh=1000; // Refresh rate in milli seconds
-        mytime=setTimeout('display_ct()',refresh)
-        }
-
-        function display_ct() {
-        var x = new Date()
-        document.getElementById('ct').innerHTML = x;
-        display_c();
-        }
-
-        $(document).ready(function(){
-            var amount = $('.col-4').length;
-            $('.amount').html("Total number of posts submitted: "+ amount);
-        },
-        $('.comments').click(function(){
-            $(".comment-content").toggle();
-        })
-        )
-
     </script>
 {% endblock %}
 

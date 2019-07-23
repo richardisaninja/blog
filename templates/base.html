@@ -7,15 +7,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %} {% endblock %}</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- custom files for you to write in -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script src="{% static 'js.js' %}"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
     <!--Modal CSS-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
 
     {% block custom_files %}
         {#    DO NOT ADD ANYTHING TO THIS CODE, THIS IS THE BASE TEMPLATE #}
@@ -28,7 +32,7 @@
     {#    DO NOT ADD ANYTHING TO THIS CODE, THIS IS THE BASE TEMPLATE #}
 {% endblock %}
 
-<body onload=display_ct();>
+<body  onload=display_ct();>
 <div class="main">
     <header>
         {% block header %}{% endblock %}
@@ -39,7 +43,7 @@
 <footer>
     {% block footer_content %} {% endblock %}
 </footer>
-
+<script type="text/javascript" src="{% static 'javascript.js'%}"></script>
 <script src="{% static 'js.js' %}"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 

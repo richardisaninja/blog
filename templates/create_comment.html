@@ -26,18 +26,33 @@
 
 
 {% block content %}
-    <h1>Create Comment</h1>
+    
+<div class="main-sec">
+        <nav>
+                <ul class="nav">
+                    <li>.blog_logo</li>
+                    <li>Edit Post</li>
+                    <li><div class="create"><a href="{% url 'post_view' %}">View Posts</a></div></li>
+                </ul>
+            </nav>
 
-    <form method="post" action="">
-        {% csrf_token %}
-        <br>
-        {{ form.content.label }}
-        {{ form.content }}
-        <br>
+           <div class="row">
+            <div class="col-md-4"></div>
+                <div class="col-md-4">   
+                    <form method="post"  onsubmit="return validateFormC()" name="myForm" action="">
+                        {% csrf_token %}
+                        <br>
+                      
+                        {{ form.content }}
+                        
+                        <br>
 
-        <button type="submit"> Submit</button>
-    </form>
-
+                        <button type="submit"> Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
 {% endblock %}
 
 {% block footer_content %}
