@@ -69,48 +69,51 @@
 
          
 
-            <div>
+            <div id="page">
                 
+
                         {% for post in posts %}
 
-                     <div class="col-4">
-                        <h5>{{ post.submitted_at }}</h5>
-                        <h3>{{ forloop.counter }}. {{ post.title }}</h3>
-                        
-                        <ul>
-                            <li>
-                                {% if post.image %}
-                                <img class="post-img" src=" {{ post.image.url }} "/>
-                                {% endif %}
-                                <p>{{ post.content }}</p>
-                            </li>
-                        </ul>
-                        <br>
-                        <a href="{% url 'post_update' post.id %}" class="block inline">Edit Post</a><br>
-                        
-                        <a href="{% url 'post_comment' post.id %}" class="">Add Comment</a>
-                        &nbsp;
-                        <form method="post" action="{% url 'post_delete' post.id %}" class="inline view-form">
-                            {% csrf_token %}
-                            <input type="submit" value="Delete Post"/>
-                        </form>
-
-
-                        <!--Comment Section-->
-                        <p style="font-weight:bold;" class="comments">Comments</p>
-                        
-
-                       
-                        
-                        <ul class="comment-content">
-                            {% for comment in post.comments.all %}
+                     <div class="col-4 list-group">
+                        <div class="">
+                            <h5>{{ post.submitted_at }}</h5>
+                            <h3>{{ forloop.counter }}. {{ post.title }}</h3>
+                            
+                            <ul>
                                 <li>
-                                    <p>{{ comment.content }}</p>
+                                    {% if post.image %}
+                                    <img class="post-img" src=" {{ post.image.url }} "/>
+                                    {% endif %}
+                                    <p>{{ post.content }}</p>
                                 </li>
-                            {% empty %}
-                                <li>None Entered</li>
-                            {% endfor %}
-                        </ul>
+                            </ul>
+                            <br>
+                            <a href="{% url 'post_update' post.id %}" class="block inline">Edit Post</a><br>
+                            
+                            <a href="{% url 'post_comment' post.id %}" class="">Add Comment</a>
+                            &nbsp;
+                            <form method="post" action="{% url 'post_delete' post.id %}" class="inline view-form">
+                                {% csrf_token %}
+                                <input type="submit" value="Delete Post"/>
+                            </form>
+
+
+                            <!--Comment Section-->
+                            <p style="font-weight:bold;" class="comments">Comments</p>
+                            
+
+                        
+                            
+                            <ul class="comment-content">
+                                {% for comment in post.comments.all %}
+                                    <li>
+                                        <p>{{ comment.content }}</p>
+                                    </li>
+                                {% empty %}
+                                    <li>None Entered</li>
+                                {% endfor %}
+                            </ul>
+                       </div>
                     </div>
 
 
@@ -121,7 +124,18 @@
                 
             </div>
     </div>
-    <div class="col-5 padding-bottom">&nbsp;</div>
+    <!--Pagination-->
+    <div class="col-12 padding-bottom row">
+        
+        <div class="col-md-5"></div>
+            <nav aria-label=...>
+                <ul class=pagination>
+                <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
 
     <script>
         

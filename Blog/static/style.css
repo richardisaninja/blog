@@ -36,7 +36,7 @@
   .col-3 {width: 25%;}
   .col-4 {
     width: 30%;
-    height: 50vh;
+    height: 55vh;
     margin-top: 8vh;
     margin-left: 2vh;
     background-color: #FBFBFB;
@@ -181,7 +181,15 @@ input[type=submit]{
   padding: 5vh;
   border: 0px;
 }
+.col-md-5{
+  width: 45.6%;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover {
 
+    background-color: #F46967;
+    color: white;
+    border-color: #F46967;
+}
 /*SMALLER PHONE SCREENS*/
 @media only screen and (max-width: 768px){
   /*For mobile phones*/
@@ -198,3 +206,4 @@ input[type=submit]{
   border: none;
 }
 }
+
