@@ -1,3 +1,4 @@
+
 var slideIndex = 1;
 showDivs(slideIndex);
 
@@ -45,33 +46,5 @@ $('.comments').click(function(){
 $(".comment-content").toggle();
 })
 )
-
-
-//FORM validations
-function validateForm() {
-    var x = document.forms["myForm"]["title"].value;
-    var y = document.forms["myForm"]["content"].value;
-    if (x == "" || x.length<5) {
-      alert("Title must be more than 5 characters");
-      return false;
-    }
-    if (y == "" || y.length<5) {
-        alert("Content must be more than 5 characters");
-        return false;
-      }
-}
-
-function validateFormC() {
-   
-    var y = document.forms["myForm"]["content"].value;
-
-    
-    if (y == "" || y.length<5) {
-        alert("Content must be more than 5 characters");
-        return false;
-      }
-}
-//end section
-
 
 

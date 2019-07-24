@@ -138,8 +138,27 @@
     </div>
 
     <script>
-        
+
+var on_submit_function = function(evt){
+            evt.preventDefault(); //The form wouln't be submitted Yet.
+            
+           
+                swal("Hit delete again if you're positive about this action");
+                $('.swal-modal').click(function(){
+                    $('form').off('submit', on_submit_function); //It will remove this handle and will submit the form again if it's all ok.
+            
+                     $(this).submit();
+                })
+            
+            
+            
+        }
+
+        $('form').on('submit', on_submit_function); //Registering on submit.
+
+    
     </script>
+
 {% endblock %}
 
 {% block footer_content %}

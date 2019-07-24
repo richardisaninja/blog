@@ -190,6 +190,23 @@ input[type=submit]{
     color: white;
     border-color: #F46967;
 }
+
+
+@media only screen and (max-width: 1220px){
+  [class*="col-"]{
+    width: 45%;
+ 
+  }
+
+  .main-sec{
+    margin: 0 10vh 0 10vh;
+  }
+
+  .col-4{
+    height: 55%;
+  }
+}
+
 /*SMALLER PHONE SCREENS*/
 @media only screen and (max-width: 768px){
   /*For mobile phones*/
@@ -205,5 +222,7 @@ input[type=submit]{
   margin-top: 5vh;
   border: none;
 }
+#ct{
+  display: none;
 }
-
+}

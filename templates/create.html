@@ -43,7 +43,7 @@
     <div class="row">
             <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form method="post" onsubmit="return validateForm()" name="myForm" action="" enctype="multipart/form-data">
+            <form method="post" onsubmit="" name="myForm" action="" enctype="multipart/form-data">
             {% csrf_token %}
                 {#    Here we loop through the form fields. #}
                 {# I need you to figure out how to add a class to the field. This is a good time for crsipy-forms or django widget tweaks #}
@@ -57,6 +57,35 @@
         <div class="col-md-4"></div>
     </div>
 </div>
+<script>
+
+        var on_submit_function = function(evt){
+            evt.preventDefault(); //The form wouln't be submitted Yet.
+            var y = document.forms["myForm"]["content"].value;
+
+
+            if (y == "" || y.length<5) {
+                swal('Inputs must be more than 5 characters long')
+                return false;
+            }
+            else{
+                swal('Your Content is being submitted', '', "success");
+                $('.swal-modal').click(function(){
+                    $('form').off('submit', on_submit_function); //It will remove this handle and will submit the form again if it's all ok.
+            
+                     $('form').submit();
+                })
+            }
+            
+            
+        }
+
+        $('form').on('submit', on_submit_function); //Registering on submit.
+
+
+    
+    </script>
+
 {% endblock %}
 
 {% block footer_content %}
